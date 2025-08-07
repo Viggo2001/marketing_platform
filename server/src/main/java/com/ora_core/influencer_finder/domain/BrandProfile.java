@@ -10,16 +10,16 @@ import org.hibernate.annotations.UpdateTimestamp;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity(name = "Brand_Profiles")
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Getter
-@Data
+@Setter
 public class BrandProfile implements Serializable {
 
     @Id

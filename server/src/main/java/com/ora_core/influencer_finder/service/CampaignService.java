@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ora_core.influencer_finder.domain.CampaignInfluencers;
 import com.ora_core.influencer_finder.domain.Campaigns;
+import com.ora_core.influencer_finder.domain.User;
 import com.ora_core.influencer_finder.factory.CampaignsFactory;
 import com.ora_core.influencer_finder.repository.ICampaignRepository;
 
@@ -33,6 +35,7 @@ public class CampaignService implements ICampaignService {
 
             return campaignRepository.save(campaign);
         } catch (Exception e) {
+            System.out.println(e);
             throw new RuntimeException("Error saving campaign: " + e.getMessage(), e);
         }
     }
@@ -59,5 +62,9 @@ public class CampaignService implements ICampaignService {
     public List<Campaigns> getAllCampaigns() {
         return campaignRepository.findAll();
     }
-    
+
+    public List<Campaigns> getAllCampaignInfluencersByUserId(User user) {
+        return campaignRepository.findByBrand_User(user);
+    }
+
 }
